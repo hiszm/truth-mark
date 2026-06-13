@@ -2,7 +2,7 @@
 
 > **TruthMark — 让 AI 自己标注不确定性。信不信，由你决定。**
 
-[English Version](README_EN.md)
+[English Version](README_EN.md) · [官方网站](https://hiszm.github.io/truth-mark/)
 
 ---
 

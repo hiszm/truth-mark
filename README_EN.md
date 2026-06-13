@@ -2,7 +2,7 @@
 
 > **TruthMark — Let AI mark its own uncertainty. You decide what to trust.**
 
-[中文版](README.md)
+[中文版](README.md) · [Official Website](https://hiszm.github.io/truth-mark/)
 
 ---
 
