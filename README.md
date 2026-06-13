@@ -82,14 +82,6 @@ TruthMark 通过 Claude Code Hooks 实现全自动：
 
 ---
 
-## 路线图
-
-- **第一阶段**（现在）：Claude Code Skill + Hooks ✅
-- **第二阶段**（3 个月后）：浏览器扩展，支持 ChatGPT / Claude.ai / Gemini
-- **第三阶段**（6 个月后）：跨平台 AI 对话信任层
-
----
-
 ## 许可证
 
 [MIT](LICENSE)

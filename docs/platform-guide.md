@@ -1,14 +1,14 @@
-# Platform Guide
+# 平台安装指南
 
-## Claude Code (recommended)
+## Claude Code（推荐）
 
-### One-line install
+### 一键安装
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/hiszm/truth-mark/main/scripts/install.sh | bash
 ```
 
-### Manual install
+### 手动安装
 
 ```bash
 git clone https://github.com/hiszm/truth-mark.git ~/.claude/skills/truth-mark
@@ -16,7 +16,7 @@ bash ~/.claude/skills/truth-mark/hooks/install-hooks.sh
 bash ~/.claude/skills/truth-mark/scripts/verify-install.sh
 ```
 
-### Uninstall
+### 卸载
 
 ```bash
 bash ~/.claude/skills/truth-mark/scripts/uninstall.sh

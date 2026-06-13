@@ -1,19 +1,19 @@
-# The Traffic Light System
+# 红绿灯系统
 
-TruthMark uses three intuitive marks:
+TruthMark 使用三个直观的标记：
 
-| Mark | Name | Meaning | User action |
-|:----:|------|---------|-------------|
-| 🟢 | Green | Verified fact | Safe to use |
-| 🟡 | Yellow | AI inference | Look twice |
-| 🔴 | Red | Uncertain | Do not trust blindly |
+| 标记 | 名称 | 含义 | 用户操作 |
+|:----:|------|------|---------|
+| 🟢 | 绿灯 | 确定事实 | 放心用 |
+| 🟡 | 黄灯 | AI 推断 | 看一眼 |
+| 🔴 | 红灯 | 不确定 | 别盲信 |
 
-## System Marks
+## 系统标记
 
-- 🚦 — TruthMark is active
-- 🔄 — AI corrected a previous mistake
-- ⚠️ — Marking system may have failed
+- 🚦 — TruthMark 已激活
+- 🔄 — AI 更正了之前的错误
+- ⚠️ — 标记系统可能失效
 
-## Design Principle
+## 设计原则
 
-We deliberately avoid five-level scales. Traffic lights are understood worldwide without training.
+我们刻意避免五档等级。红绿灯是全世界无需学习就能理解的直觉。

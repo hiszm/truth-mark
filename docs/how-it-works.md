@@ -1,30 +1,30 @@
-# How TruthMark Works
+# 工作原理
 
-## Architecture
+## 架构
 
-TruthMark sits between the user and Claude Code using **Hooks**:
+TruthMark 通过 **Hooks** 插入到用户与 Claude Code 之间：
 
 ```
-User prompt
+用户提问
     │
     ▼
 UserPromptSubmit Hook
-    │  Injects marking rules
+    │  注入标记规则
     ▼
-Claude thinks
+Claude 思考
     │
     ▼
-Claude responds with 🚦 🟢 🟡 🔴
+Claude 回复，自带 🚦 🟢 🟡 🔴
     │
     ▼
-PostToolUse Hook (after Read/Glob/Grep)
-    │  Verifies tool output
+PostToolUse Hook（在 Read/Glob/Grep 后）
+    │  验证工具输出
     ▼
-User sees marked response
+用户看到带标记的回复
 ```
 
-## Why Hooks?
+## 为什么用 Hooks？
 
-- **Zero user action**: rules are injected automatically on every prompt.
-- **No model changes**: works with existing Claude models.
-- **Transparent**: users see exactly what the AI marks about itself.
+- **零用户操作**：每次提问自动注入规则。
+- **无需改模型**：适用于现有 Claude 模型。
+- **完全透明**：用户能看到 AI 给自己打的每个标记。

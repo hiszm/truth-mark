@@ -1,17 +1,17 @@
-# FAQ
+# 常见问题
 
-## Does TruthMark solve AI hallucinations?
+## TruthMark 能解决 AI 幻觉吗？
 
-No. TruthMark makes AI uncertainty **visible**. It lets AI mark its own confidence so users can decide what to trust.
+不能。TruthMark 让 AI 的不确定性**可见化**，让 AI 自己标注可信度，由用户判断。
 
-## Does it work with all Claude models?
+## 它适用于所有 Claude 模型吗？
 
-Yes. It uses Claude Code Hooks, which are model-agnostic.
+是的。它使用 Claude Code Hooks，与模型无关。
 
-## Why not support Cursor or other editors in Phase 1?
+## 第一阶段为什么不支持 Cursor 或其他编辑器？
 
-Claude Code Hooks provide the most reliable automatic trigger (100%). Other platforms use weaker rule systems. We may add them later.
+Claude Code Hooks 的自动触发最可靠（100%）。其他平台使用较弱的规则系统，后续可能增加支持。
 
-## Will it slow down my conversations?
+## 会不会拖慢对话速度？
 
-No. The UserPromptSubmit Hook runs in ~10ms.
+不会。UserPromptSubmit Hook 运行时间约 10ms。

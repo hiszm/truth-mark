@@ -82,14 +82,6 @@ See [docs/how-it-works.md](docs/how-it-works.md) for details.
 
 ---
 
-## Roadmap
-
-- **Phase 1** (now): Claude Code Skill + Hooks ✅
-- **Phase 2** (3 months): Browser extension for ChatGPT / Claude.ai / Gemini
-- **Phase 3** (6 months): Cross-platform AI conversation trust layer
-
----
-
 ## License
 
 [MIT](LICENSE)
