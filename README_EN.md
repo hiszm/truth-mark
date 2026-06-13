@@ -6,11 +6,11 @@
 
 ---
 
-TruthMark is a Claude Code Skill that auto-marks every AI response with 🟢🟡🔴 traffic lights:
+TruthMark is a Claude Code Skill. It **does not modify the AI's original answer**. Instead, it appends a 🚦 TruthMark assessment block at the end of every response, telling you whether the answer is overall:
 
-- 🟢 **Green** — verified fact
+- 🟢 **Green** — trustworthy
 - 🟡 **Yellow** — AI inference
-- 🔴 **Red** — uncertain / do not trust blindly
+- 🔴 **Red** — untrustworthy
 
 TruthMark does **not** solve AI hallucinations. It makes them **visible**.
 
@@ -25,20 +25,26 @@ TruthMark does **not** solve AI hallucinations. It makes them **visible**.
 | **Only 3.1%** highly trust AI accuracy | Stack Overflow 2025 |
 
 Existing tools ask "Is this hallucination?"  
-TruthMark asks a better question: **"Which sentence can I trust?"**
+TruthMark asks a better question: **"Can I trust this answer as a whole?"**
 
 ---
 
 ## 🚦 Quick Preview
 
-```
-User: What does this error mean?
+**AI original answer:**
 
-🚦
-🟢 ImportError: No module named 'requests' means Python cannot find the package.
-🟡 You may need to run pip install requests.
-🟡 If using a virtual environment, make sure it is activated.
-🔴 I do not know your Python version or operating system.
+```
+In 2025, the AI industry will continue to grow rapidly. Multimodal AI will become mainstream, and open-source models will further close the gap with closed-source models. In the second half of 2025, GPT-6 will be released, which will completely change the market landscape.
+```
+
+**TruthMark assessment:**
+
+```
+---
+🚦 TruthMark Assessment
+Overall: 🔴 Red · Untrustworthy
+Quote: "In the second half of 2025, GPT-6 will be released, which will completely change the market landscape."
+Reason: This involves a future product release date beyond my knowledge cutoff and cannot be verified.
 ```
 
 ---
@@ -65,9 +71,9 @@ bash ~/.claude/skills/truth-mark/scripts/verify-install.sh
 
 TruthMark uses Claude Code Hooks:
 
-1. **UserPromptSubmit Hook** injects marking rules before every prompt.
+1. **UserPromptSubmit Hook** injects the "answer first, assess after" rule before every prompt.
 2. **PostToolUse Hook** verifies Read/Glob/Grep results.
-3. Claude responds with 🚦 and 🟢🟡🔴 on every paragraph.
+3. Claude outputs the original answer first, then appends the 🚦 TruthMark assessment block.
 
 See [docs/how-it-works.md](docs/how-it-works.md) for details.
 

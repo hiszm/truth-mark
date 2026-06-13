@@ -242,6 +242,7 @@
             <div class="logo">🚦</div>
             <h1>TruthMark</h1>
             <p class="slogan">Let AI mark its own uncertainty. You decide what to trust.</p>
+            <p style="color: var(--muted); max-width: 600px; margin: 0 auto 24px;">TruthMark does not modify the AI's original answer. It appends a confidence assessment block at the end of every response.</p>
             <div class="lang-switch">
                 <a href="index.html">中文</a>
                 <a href="#" class="active">English</a>
@@ -259,18 +260,18 @@
             <div class="cards">
                 <div class="card green">
                     <div class="icon">🟢</div>
-                    <h3>Green · Verified Fact</h3>
-                    <p>Deterministic knowledge from training data, official docs, axioms. Safe to use.</p>
+                    <h3>Green · Trustworthy</h3>
+                    <p>The answer is based on verified facts, official docs, or axioms.</p>
                 </div>
                 <div class="card yellow">
                     <div class="icon">🟡</div>
                     <h3>Yellow · AI Inference</h3>
-                    <p>Context-based derivation, suggestion, best practice. Look twice.</p>
+                    <p>The answer contains inference, suggestion, or trend prediction.</p>
                 </div>
                 <div class="card red">
                     <div class="icon">🔴</div>
-                    <h3>Red · Uncertain</h3>
-                    <p>Beyond knowledge cutoff, inaccessible files, real-time info. Do not trust blindly.</p>
+                    <h3>Red · Untrustworthy</h3>
+                    <p>The answer contains unverifiable, beyond-knowledge, or real-time content.</p>
                 </div>
             </div>
         </div>
@@ -279,14 +280,15 @@
     <section>
         <div class="container">
             <h2>Quick Preview</h2>
+            <p style="color: var(--muted); margin-bottom: 16px;">The AI answers normally first, then TruthMark appends the assessment:</p>
             <div class="preview">
-                <pre>User: What does this error mean?
+                <pre>In 2025, the AI industry will continue to grow rapidly. Multimodal AI will become mainstream, and open-source models will further close the gap with closed-source models. In the second half of 2025, GPT-6 will be released, which will completely change the market landscape.
 
-🚦
-🟢 ImportError: No module named 'requests' means Python cannot find the package.
-🟡 You may need to run pip install requests.
-🟡 If using a virtual environment, make sure it is activated.
-🔴 I do not know your Python version or operating system.</pre>
+---
+🚦 TruthMark Assessment
+Overall: 🔴 Red · Untrustworthy
+Quote: "In the second half of 2025, GPT-6 will be released, which will completely change the market landscape."
+Reason: This involves a future product release date beyond my knowledge cutoff and cannot be verified.</pre>
             </div>
         </div>
     </section>
@@ -305,10 +307,10 @@
         <div class="container">
             <h2>Key Features</h2>
             <ul class="features">
-                <li>Zero configuration after install — every AI response is auto-marked</li>
-                <li>Three-level traffic lights require no learning curve</li>
+                <li>Does not modify the AI's original answer — appends assessment at the end</li>
+                <li>Three-level traffic lights provide an overall rating at a glance</li>
+                <li>Red and yellow ratings quote exact sentences from the original answer</li>
                 <li>Hooks inject rules automatically, transparent to users</li>
-                <li>Post-tool verification prevents hallucinations from empty results</li>
                 <li>Open source under MIT — free to use and extend</li>
             </ul>
         </div>

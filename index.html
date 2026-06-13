@@ -242,6 +242,7 @@
             <div class="logo">🚦</div>
             <h1>TruthMark</h1>
             <p class="slogan">让 AI 自己标注不确定性。信不信，由你决定。</p>
+            <p style="color: var(--muted); max-width: 600px; margin: 0 auto 24px;">TruthMark 不修改 AI 原回答，只在每次回复最后追加一个可信度评估块。</p>
             <div class="lang-switch">
                 <a href="#" class="active">中文</a>
                 <a href="index_en.html">English</a>
@@ -259,18 +260,18 @@
             <div class="cards">
                 <div class="card green">
                     <div class="icon">🟢</div>
-                    <h3>绿灯 · 确定事实</h3>
-                    <p>训练数据中的确定知识、官方文档、数学公理。放心用。</p>
+                    <h3>绿灯 · 可信</h3>
+                    <p>回答整体基于确定事实、官方文档、数学公理。</p>
                 </div>
                 <div class="card yellow">
                     <div class="icon">🟡</div>
                     <h3>黄灯 · AI 推断</h3>
-                    <p>基于上下文的推导、建议、最佳实践。看一眼再决定。</p>
+                    <p>回答包含推断、建议、趋势预测，引用原文说明。</p>
                 </div>
                 <div class="card red">
                     <div class="icon">🔴</div>
-                    <h3>红灯 · 不确定</h3>
-                    <p>超出知识范围、无法访问文件、实时信息。别盲信。</p>
+                    <h3>红灯 · 不可信</h3>
+                    <p>回答包含无法验证、超出知识范围或实时信息的内容。</p>
                 </div>
             </div>
         </div>
@@ -279,14 +280,15 @@
     <section>
         <div class="container">
             <h2>效果预览</h2>
+            <p style="color: var(--muted); margin-bottom: 16px;">AI 先正常回答，TruthMark 在原回答后追加评估：</p>
             <div class="preview">
-                <pre>用户：这个报错什么意思？
+                <pre>2025 年 AI 行业将继续快速发展。多模态 AI 会成为主流，开源模型会进一步缩小与闭源模型的差距。2025 年下半年，GPT-6 将会发布，这将彻底改变市场格局。
 
-🚦
-🟢 ImportError: No module named 'requests' 表示 Python 找不到 requests 包。
-🟡 你可能需要运行 pip install requests。
-🟡 如果用了虚拟环境，先检查是否已激活。
-🔴 我不知道你的 Python 版本和操作系统。</pre>
+---
+🚦 TruthMark 评估
+总体：🔴 红灯 · 不可信
+引用："2025 年下半年，GPT-6 将会发布，这将彻底改变市场格局。"
+依据：该内容涉及未来产品发布日期，超出我的知识范围，无法验证。</pre>
             </div>
         </div>
     </section>
@@ -305,10 +307,10 @@
         <div class="container">
             <h2>核心特性</h2>
             <ul class="features">
-                <li>安装后零配置，每次 AI 回复自动标记</li>
-                <li>三档红绿灯直觉，无需学习成本</li>
+                <li>不修改 AI 原回答，只在最后追加可信度评估</li>
+                <li>三档红绿灯直觉，整体评级一目了然</li>
+                <li>红灯/黄灯自动引用原回答中的具体句子</li>
                 <li>Hooks 自动注入规则，用户无感知</li>
-                <li>工具调用后验证，防止基于空结果幻觉</li>
                 <li>开源 MIT 协议，自由使用和二次开发</li>
             </ul>
         </div>
