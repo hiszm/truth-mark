@@ -1,30 +1,25 @@
 # 工作原理
 
-## 架构
+## 两步流程
 
-TruthMark 通过 **Hooks** 插入到用户与 Claude Code 之间：
+TruthMark 通过 Claude Code Hooks 让 AI 分两步输出：
 
 ```
 用户提问
     │
     ▼
-UserPromptSubmit Hook
-    │  注入标记规则
-    ▼
-Claude 思考
+UserPromptSubmit Hook 注入评估规则
     │
     ▼
-Claude 回复，自带 🚦 🟢 🟡 🔴
+Claude 输出原回答（不做任何标记）
     │
     ▼
-PostToolUse Hook（在 Read/Glob/Grep 后）
-    │  验证工具输出
+Claude 在原回答后追加 🚦 TruthMark 评估块
+    │
     ▼
-用户看到带标记的回复
+用户看到完整回答 + 可信度评估
 ```
 
-## 为什么用 Hooks？
+## 为什么不修改原回答？
 
-- **零用户操作**：每次提问自动注入规则。
-- **无需改模型**：适用于现有 Claude 模型。
-- **完全透明**：用户能看到 AI 给自己打的每个标记。
+修改原回答会破坏阅读体验。TruthMark 把"答案"和"可信度评估"分开，让用户既获得完整信息，又能判断哪些内容可信。
