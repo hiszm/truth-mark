@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruthMark — Make AI Hallucinations Visible</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card: #161b22;
+            --text: #c9d1d9;
+            --muted: #8b949e;
+            --border: #30363d;
+            --green: #238636;
+            --green-glow: #2ea043;
+            --yellow: #d29922;
+            --yellow-glow: #e3b341;
+            --red: #da3633;
+            --red-glow: #f85149;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 0 40px;
+        }
+
+        .logo {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .slogan {
+            font-size: 20px;
+            color: var(--muted);
+            margin-bottom: 32px;
+        }
+
+        .lang-switch {
+            margin-bottom: 24px;
+        }
+
+        .lang-switch a {
+            margin: 0 8px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            font-size: 14px;
+        }
+
+        .lang-switch a.active {
+            background: #1f6feb;
+            color: #fff;
+            border-color: #1f6feb;
+        }
+
+        .cta {
+            display: inline-flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.1s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        section {
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+        }
+
+        .card .icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            text-shadow: 0 0 20px currentColor;
+        }
+
+        .card.green .icon { color: var(--green-glow); }
+        .card.yellow .icon { color: var(--yellow-glow); }
+        .card.red .icon { color: var(--red-glow); }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .preview {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            overflow-x: auto;
+        }
+
+        .preview pre {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .install {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .install code {
+            display: block;
+            background: #0d1117;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            font-family: "SFMono-Regular", Consolas, monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin-top: 12px;
+        }
+
+        .features {
+            list-style: none;
+        }
+
+        .features li {
+            padding: 12px 0;
+            padding-left: 32px;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .features li:last-child {
+            border-bottom: none;
+        }
+
+        .features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--green-glow);
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 48px 0 80px;
+            color: var(--muted);
+            font-size: 14px;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 32px; }
+            .logo { font-size: 48px; }
+            .cta { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">🚦</div>
+            <h1>TruthMark</h1>
+            <p class="slogan">Let AI mark its own uncertainty. You decide what to trust.</p>
+            <div class="lang-switch">
+                <a href="index.html">中文</a>
+                <a href="#" class="active">English</a>
+            </div>
+            <div class="cta">
+                <a class="btn btn-primary" href="https://github.com/hiszm/truth-mark#installation">Install Now</a>
+                <a class="btn btn-secondary" href="https://github.com/hiszm/truth-mark">View on GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <h2>The Traffic Light System</h2>
+            <div class="cards">
+                <div class="card green">
+                    <div class="icon">🟢</div>
+                    <h3>Green · Verified Fact</h3>
+                    <p>Deterministic knowledge from training data, official docs, axioms. Safe to use.</p>
+                </div>
+                <div class="card yellow">
+                    <div class="icon">🟡</div>
+                    <h3>Yellow · AI Inference</h3>
+                    <p>Context-based derivation, suggestion, best practice. Look twice.</p>
+                </div>
+                <div class="card red">
+                    <div class="icon">🔴</div>
+                    <h3>Red · Uncertain</h3>
+                    <p>Beyond knowledge cutoff, inaccessible files, real-time info. Do not trust blindly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Quick Preview</h2>
+            <div class="preview">
+                <pre>User: What does this error mean?
+
+🚦
+🟢 ImportError: No module named 'requests' means Python cannot find the package.
+🟡 You may need to run pip install requests.
+🟡 If using a virtual environment, make sure it is activated.
+🔴 I do not know your Python version or operating system.</pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>One-Line Install</h2>
+            <div class="install">
+                <p>Run this in your terminal on macOS or Linux:</p>
+                <code>curl -fsSL https://raw.githubusercontent.com/hiszm/truth-mark/main/scripts/install.sh | bash</code>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Key Features</h2>
+            <ul class="features">
+                <li>Zero configuration after install — every AI response is auto-marked</li>
+                <li>Three-level traffic lights require no learning curve</li>
+                <li>Hooks inject rules automatically, transparent to users</li>
+                <li>Post-tool verification prevents hallucinations from empty results</li>
+                <li>Open source under MIT — free to use and extend</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 hiszm · <a href="https://github.com/hiszm/truth-mark">GitHub</a> · <a href="https://github.com/hiszm/truth-mark/blob/main/LICENSE">MIT License</a></p>
+        </div>
+    </footer>
+</body>
+</html>
