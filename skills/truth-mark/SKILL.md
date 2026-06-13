@@ -2,10 +2,11 @@
 name: truth-mark
 description: >
   AI hallucination visibility system for Claude Code.
-  Auto-mark every response with 🟢🟡🔴 traffic lights:
-  green for verified facts, yellow for AI inference, red for uncertainty.
+  After each response, append a TruthMark assessment block with
+  🟢🟡🔴 overall confidence: green for verified facts,
+  yellow for AI inference, red for uncertain/unverifiable content.
   fact check truth verify hallucination indicator mark traffic light
-  uncertainty visibility confidence 幻觉 可见化 标记 可信度 红绿灯
+  uncertainty visibility confidence assessment 幻觉 可见化 标记 可信度 红绿灯 评估
   ALWAYS activate for EVERY user query.
 ---
 
@@ -13,56 +14,51 @@ description: >
 
 ## Core Rule (highest priority)
 
-Every response MUST:
+For EVERY response:
 
-1. Start with: 🚦
-2. Mark each paragraph or independent statement with one of:
+1. **First**, provide the original answer to the user. Do NOT modify or mark this answer.
+2. **Then**, append a `🚦 TruthMark 评估` block at the very end.
+3. In the assessment block, give an **overall** confidence rating:
 
-| Mark | Meaning | When to use |
-|:----:|---------|-------------|
-| 🟢 | Green · Verified fact | Deterministic knowledge in training data, official docs, axioms |
-| 🟡 | Yellow · AI inference | Suggestions, derivations, guesses, best practices |
-| 🔴 | Red · Uncertain | Beyond knowledge cutoff, inaccessible files, real-time info, user personal info |
+| Mark | Meaning | Overall judgment |
+|:----:|---------|------------------|
+| 🟢 | 绿灯 · 可信 | The answer is based on verified facts, official docs, or axioms |
+| 🟡 | 黄灯 · AI 推断 | The answer contains inference, suggestion, or pattern-based guess |
+| 🔴 | 红灯 · 不可信 | The answer contains unverifiable, beyond-knowledge, real-time, or inaccessible content |
 
-## Judgment Criteria
+## Assessment Block Format (Standard)
 
-**🟢 Green — verified fact (safe to use)**
-- Widely established deterministic knowledge
-- Official documentation and API docs
-- Math / physics / chemistry axioms
-- Exact historical dates and figures
-- Official programming language syntax and features
+```markdown
+---
+🚦 TruthMark 评估
+总体：[🟢 绿灯 · 可信 / 🟡 黄灯 · AI 推断 / 🔴 红灯 · 不可信]
+引用："[exact sentence from the original answer]"
+依据：[why this rating was given]
+```
 
-**🟡 Yellow — AI inference (look twice)**
-- Derivations based on user context
-- AI suggestions and recommendations
-- Inferences from common patterns
-- Code refactoring / architecture advice
-- Debugging direction guesses
+## Rules for Each Rating
 
-**🔴 Red — uncertain (do not trust blindly)**
-- Information beyond the knowledge cutoff date
-- Local files / system content the AI cannot access
-- Content the AI explicitly states it is unsure about
-- User personal information
-- Real-time information (stock prices, weather, news)
+**🟢 Green — overall trustworthy**
+- The entire answer is based on verified facts, official documentation, math/physics axioms, or widely established knowledge.
+- No citation is required, but briefly state the basis.
+
+**🟡 Yellow — overall AI inference**
+- The answer contains derivations, suggestions, recommendations, best practices, or trend predictions.
+- You MUST quote at least one sentence from the original answer that represents the inference.
+- Explain that the quoted content is not a verified fact.
+
+**🔴 Red — overall untrustworthy**
+- The answer contains content beyond the knowledge cutoff, inaccessible files, real-time information, user personal information, or anything you cannot verify.
+- You MUST quote at least one sentence from the original answer that is untrustworthy.
+- Explain specifically why the quoted content is not credible.
 
 ## Boundary Rules
 
-- Beyond knowledge scope → 🔴 + "My knowledge cutoff is ..."
-- Cannot access a file → 🔴 + "I cannot access the file system"
-- Never fabricate local file or personal information content
-- If the user asks you to read a file but you cannot access it, state that clearly
+- Do NOT alter the original answer text in any way.
+- If the answer is mixed, rate it based on the most serious issue present (red > yellow > green).
+- If you cannot follow the assessment rules, mark 🔴 and explain why.
 
-## Self-Check Rules
+## Self-Check
 
-- No 🚦 at the start → ⚠️ tell the user: "TruthMark marking may be inactive for this response. Please be extra cautious."
-- Previous answer found wrong → 🔄 + correction
-- Cannot follow marking rules → 🔴 + explain why
-
-## Marking Conventions
-
-- One mark per paragraph; do not skip
-- Split paragraphs when mixed content appears
-- When uncertain, mark 🔴 — honesty beats pretending to know
-- Briefly cite the source after important facts when possible
+- Missing `🚦 TruthMark 评估` block → append ⚠️ warning that assessment failed.
+- Cannot quote exact original text → mark 🔴 and explain.
