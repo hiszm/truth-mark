@@ -5,6 +5,11 @@
 
 ---
 
+<!-- Language tabs using GitHub-supported details/summary -->
+
+<details open>
+<summary>🇨🇳 中文</summary>
+
 ## 这是什么？
 
 TruthMark 是一个 Claude Code Skill，让 AI 在每次回复前自动标注 🟢🟡🔴 红绿灯：
@@ -14,18 +19,6 @@ TruthMark 是一个 Claude Code Skill，让 AI 在每次回复前自动标注 �
 - 🔴 **红灯** — 不确定，别盲信
 
 TruthMark **不能消灭** AI 幻觉，但它让幻觉**无处藏身**。
-
-### What is it?
-
-TruthMark is a Claude Code Skill that auto-marks every AI response with 🟢🟡🔴 traffic lights:
-
-- 🟢 **Green** — verified fact
-- 🟡 **Yellow** — AI inference
-- 🔴 **Red** — uncertain / do not trust blindly
-
-TruthMark does **not** solve AI hallucinations. It makes them **visible**.
-
----
 
 ## 为什么选择 TruthMark？
 
@@ -38,19 +31,6 @@ TruthMark does **not** solve AI hallucinations. It makes them **visible**.
 现有工具问："这是幻觉吗？"  
 TruthMark 问得更好："**这段话里，哪句能信？**"
 
-### Why TruthMark?
-
-| Data | Source |
-|------|--------|
-| **66%** of developers say AI code is "almost correct but not fully" | Stack Overflow 2025 |
-| **87%** worry about AI agent accuracy | Stack Overflow 2025 |
-| **Only 3.1%** highly trust AI accuracy | Stack Overflow 2025 |
-
-Existing tools ask "Is this hallucination?"  
-TruthMark asks a better question: **"Which sentence can I trust?"**
-
----
-
 ## 🚦 效果预览
 
 ```
@@ -62,20 +42,6 @@ TruthMark asks a better question: **"Which sentence can I trust?"**
 🟡 如果用了虚拟环境，先检查是否已激活。
 🔴 我不知道你的 Python 版本和操作系统。
 ```
-
-### Quick Preview
-
-```
-User: What does this error mean?
-
-🚦
-🟢 ImportError: No module named 'requests' means Python cannot find the package.
-🟡 You may need to run pip install requests.
-🟡 If using a virtual environment, make sure it is activated.
-🔴 I do not know your Python version or operating system.
-```
-
----
 
 ## 安装
 
@@ -93,24 +59,6 @@ bash ~/.claude/skills/truth-mark/hooks/install-hooks.sh
 bash ~/.claude/skills/truth-mark/scripts/verify-install.sh
 ```
 
-### Installation
-
-#### One-line install (macOS / Linux)
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/hiszm/truth-mark/main/scripts/install.sh | bash
-```
-
-#### Manual install
-
-```bash
-git clone https://github.com/hiszm/truth-mark.git ~/.claude/skills/truth-mark
-bash ~/.claude/skills/truth-mark/hooks/install-hooks.sh
-bash ~/.claude/skills/truth-mark/scripts/verify-install.sh
-```
-
----
-
 ## 工作原理
 
 TruthMark 通过 Claude Code Hooks 实现全自动：
@@ -121,7 +69,74 @@ TruthMark 通过 Claude Code Hooks 实现全自动：
 
 详情见 [docs/how-it-works.md](docs/how-it-works.md)。
 
-### How It Works
+## 文档
+
+- [工作原理](docs/how-it-works.md)
+- [平台安装指南](docs/platform-guide.md)
+- [红绿灯系统](docs/traffic-light-system.md)
+- [常见问题](docs/faq.md)
+
+## 路线图
+
+- **第一阶段**（现在）：Claude Code Skill + Hooks ✅
+- **第二阶段**（3 个月后）：浏览器扩展，支持 ChatGPT / Claude.ai / Gemini
+- **第三阶段**（6 个月后）：跨平台 AI 对话信任层
+
+</details>
+
+<details>
+<summary>🇬🇧 English</summary>
+
+## What is it?
+
+TruthMark is a Claude Code Skill that auto-marks every AI response with 🟢🟡🔴 traffic lights:
+
+- 🟢 **Green** — verified fact
+- 🟡 **Yellow** — AI inference
+- 🔴 **Red** — uncertain / do not trust blindly
+
+TruthMark does **not** solve AI hallucinations. It makes them **visible**.
+
+## Why TruthMark?
+
+| Data | Source |
+|------|--------|
+| **66%** of developers say AI code is "almost correct but not fully" | Stack Overflow 2025 |
+| **87%** worry about AI agent accuracy | Stack Overflow 2025 |
+| **Only 3.1%** highly trust AI accuracy | Stack Overflow 2025 |
+
+Existing tools ask "Is this hallucination?"  
+TruthMark asks a better question: **"Which sentence can I trust?"**
+
+## 🚦 Quick Preview
+
+```
+User: What does this error mean?
+
+🚦
+🟢 ImportError: No module named 'requests' means Python cannot find the package.
+🟡 You may need to run pip install requests.
+🟡 If using a virtual environment, make sure it is activated.
+🔴 I do not know your Python version or operating system.
+```
+
+## Installation
+
+### One-line install (macOS / Linux)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/hiszm/truth-mark/main/scripts/install.sh | bash
+```
+
+### Manual install
+
+```bash
+git clone https://github.com/hiszm/truth-mark.git ~/.claude/skills/truth-mark
+bash ~/.claude/skills/truth-mark/hooks/install-hooks.sh
+bash ~/.claude/skills/truth-mark/scripts/verify-install.sh
+```
+
+## How It Works
 
 TruthMark uses Claude Code Hooks:
 
@@ -131,22 +146,20 @@ TruthMark uses Claude Code Hooks:
 
 See [docs/how-it-works.md](docs/how-it-works.md) for details.
 
----
+## Documentation
 
-## 文档 / Documentation
+- [How it works](docs/how-it-works.md)
+- [Platform guide](docs/platform-guide.md)
+- [Traffic light system](docs/traffic-light-system.md)
+- [FAQ](docs/faq.md)
 
-- [工作原理 / How it works](docs/how-it-works.md)
-- [平台安装指南 / Platform guide](docs/platform-guide.md)
-- [红绿灯系统 / Traffic light system](docs/traffic-light-system.md)
-- [常见问题 / FAQ](docs/faq.md)
+## Roadmap
 
----
+- **Phase 1** (now): Claude Code Skill + Hooks ✅
+- **Phase 2** (3 months): Browser extension for ChatGPT / Claude.ai / Gemini
+- **Phase 3** (6 months): Cross-platform AI conversation trust layer
 
-## 路线图 / Roadmap
-
-- **第一阶段**（现在）：Claude Code Skill + Hooks ✅
-- **第二阶段**（3 个月后）：浏览器扩展，支持 ChatGPT / Claude.ai / Gemini
-- **第三阶段**（6 个月后）：跨平台 AI 对话信任层
+</details>
 
 ---
 
